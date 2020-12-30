@@ -18,7 +18,8 @@
     "slow"
   ],
   "activationEvents": [
-    "onCommand:extension.slowbug-start"
+    "onCommand:extension.slowbug-start",
+    "onCommand:extension.slowbug-pause"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -26,9 +27,46 @@
       {
         "command": "extension.slowbug-start",
         "title": "Start Slowbug",
-        "category": "Slowbug"
+        "category": "Slowbug",
+        "icon": {
+          "dark": "./images/slow_icon_dark.svg",
+          "light": "./images/slow_icon_light.svg"
+        }
+      },
+      {
+        "command": "extension.slowbug-pause",
+        "title": "Pause Slowbug",
+        "category": "Slowbug",
+        "icon": {
+          "dark": "./images/pause_icon_dark.svg",
+          "light": "./images/pause_icon_light.svg"
+        }
       }
-    ]
+    ],
+    "menus": {
+      "editor/title": [
+        {
+         "when": "true",
+         "command": "extension.slowbug-start",
+         "group": "navigation@420"
+        },
+        {
+          "when": "true",
+          "command": "extension.slowbug-pause",
+          "group": "navigation@421"
+         }
+      ]
+    },
+    "configuration": {
+      "title": "Slowbug",
+      "properties": {
+        "slowbug.stepDuration": {
+          "type": "integer",
+          "default": 800,
+          "description": "Duration of each step (in milliseconds)"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
