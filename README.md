@@ -1,7 +1,7 @@
 # slowbug
 <img src="./images/banner.jpg" width="400px">
 
-Slowbug is a VS Code extension for debugging your code by running it slowly, at your pace.
+Slowbug is a VS Code extension for debugging your code in slowmo!
 
 ## What?
 The idea is simple. Make it possible to see how the control 
@@ -16,12 +16,12 @@ Slowbug is agnostic to languages and debug adapters since it directly
 issues commands to the VS Code workbench.
 
 ## Usage
-<img src="./images/slowbug_demo.gif" width="600px">    
+<img src="./images/slowbug_demo.gif" width="650px">    
 
 The functionality right now is minimal. You can pause and resume Slowbug.
 The speed can be configured in `settings > Slowbug > stepDuration`.
 
-> The extension is not yet available on the VS Code Marketplace.
+> The extension will soon be available on VS Code Marketplace.
 
 ## Upcoming features
 1. Range selection  
