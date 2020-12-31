@@ -1,7 +1,7 @@
 # slowbug
 <img src="./images/banner.jpg" width="400px">
 
-Slowbug is a VS Code extension for debugging your code in slowmo!
+Slowbug is a VS Code extension for debugging your code in slow-mo!
 
 ## What?
 The idea is simple. Make it possible to see how the control 
