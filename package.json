@@ -1,9 +1,9 @@
 {
   "name": "slowbug",
-  "publisher": "Srimukh Sripada",
-  "displayName": "Slowbug - Run your code, slowly",
-  "description": "Slowbug is a VS Code extension for debugging your code by running it slowly, at your pace.",
-  "version": "0.0.1",
+  "publisher": "srimukh",
+  "displayName": "Slowbug - Watch your code run, slowly",
+  "description": "Slowbug is a VS Code extension for debugging your code in slow-mo.",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.52.0"
   },
@@ -29,8 +29,8 @@
         "title": "Start Slowbug",
         "category": "Slowbug",
         "icon": {
-          "dark": "./images/slow_icon_dark.svg",
-          "light": "./images/slow_icon_light.svg"
+          "dark": "images/slow_icon_dark.png",
+          "light": "images/slow_icon_light.png"
         }
       },
       {
@@ -38,8 +38,8 @@
         "title": "Pause Slowbug",
         "category": "Slowbug",
         "icon": {
-          "dark": "./images/pause_icon_dark.svg",
-          "light": "./images/pause_icon_light.svg"
+          "dark": "images/pause_icon_dark.png",
+          "light": "images/pause_icon_light.png"
         }
       }
     ],
@@ -88,5 +88,6 @@
     "mocha": "^8.1.3",
     "typescript": "^4.1.2",
     "vscode-test": "^1.4.1"
-  }
+  },
+  "repository": "https://github.com/postmalloc/slowbug.git"
 }
