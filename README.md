@@ -16,7 +16,7 @@ Slowbug is agnostic to languages and debug adapters since it directly
 issues commands to the VS Code workbench.
 
 ## Usage
-<img src="images/slowbug_demo.gif" width="650px">    
+<img src="images/slowbug_demo.gif" width="550">    
 
 The functionality right now is minimal. You can pause and resume Slowbug.
 The speed can be configured in `settings > Slowbug > stepDuration`.

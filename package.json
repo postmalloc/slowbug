@@ -1,9 +1,10 @@
 {
   "name": "slowbug",
   "publisher": "srimukh",
-  "displayName": "Slowbug - Watch your code run, slowly",
+  "displayName": "Slowbug - Debug you code in slow-mo!",
   "description": "Slowbug is a VS Code extension for debugging your code in slow-mo.",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.52.0"
   },
