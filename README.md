@@ -8,7 +8,7 @@ The idea is simple. Make it possible to see how the control
 flows through the code. I noticed that often, I end up inserting 
 too many breakpoints, and find it tedious to step through and
 understand the flow when working on a new codebase. Slowbug aims
-to solve it by executing the code slowly, at your preferred speed,
+to solve that by executing the code slowly, at your preferred speed,
 line by line. 
 
 Slowbug is agnostic to languages and debug adapters since it 

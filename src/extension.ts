@@ -1,5 +1,23 @@
 import * as vscode from "vscode";
 
+/* Wrap the vanilla `setInterval` to handle
+clearing of all timers. Makes pause/resume experience
+more predictable. */
+let setIntervalMod = (function(oldsetInterval){
+  const timers: NodeJS.Timeout[] = [];
+  let f: any = function(a: () => any, b: number){
+      return timers[timers.length] = oldsetInterval(a,b);
+  };
+  f.clearAll = function(){
+    let r;
+    while(r = timers.pop()) { 
+      clearInterval( r );
+    }       
+  };
+  return f;    
+})(setInterval);
+
+
 export function activate(context: vscode.ExtensionContext) {
   // Read the stepDuration from the settings
   let stepDuration = vscode.workspace.getConfiguration('slowbug').stepDuration;
@@ -17,32 +35,24 @@ export function activate(context: vscode.ExtensionContext) {
       if (context.globalState.get('timerId') == undefined) {
         // Wait until the session is ready before you start the timer
         vscode.debug.onDidStartDebugSession(() => {
-          let timerId = setInterval(stepFn, stepDuration);
-          context.globalState.update('timerId', timerId);
+          setIntervalMod(stepFn, stepDuration);
         });
       }
     } else {
-      /* If already debugging, just create a new one
-        NOTE: The `timerId` is actually a cyclic object that 
-        cannot be JSON-stringified. Setting properties on the
-        globalState requires JSON-stringified values. But this
-        works for some reason. Probably not safe. */ 
-      let timerId = setInterval(stepFn, stepDuration);
-      setImmediate(() => context.globalState.update('timerId', timerId));
+      // If already debugging, just create a new timer
+      setIntervalMod(stepFn, stepDuration);
     }
   }
 
   // Clear the timers on debug end
   vscode.debug.onDidTerminateDebugSession(() => {
-    let timerId: any = context.globalState.get('timerId');
-    clearInterval(timerId);
+    setIntervalMod.clearAll();
   });
 
   // Fn to pause the debugger and clear the current timer
   function pauseFn() {
     vscode.commands.executeCommand("workbench.action.debug.pause");
-    let timerId: any = context.globalState.get('timerId');
-    clearInterval(timerId);
+    process.nextTick(() => setIntervalMod.clearAll());
   }
 
   const startCmd = vscode.commands.registerCommand('extension.slowbug-start', startFn);
